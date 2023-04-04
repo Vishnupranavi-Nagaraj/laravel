@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Builder\Class_;
 
@@ -19,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('users','UserController');
-
 Route::resource('users', 'EmployeeController');
+
+Route::get('login', [AuthController::class,'index'])->name('login');
+Route::post('login',[AuthController::class, 'customLogin'])->name('login.custom'); 
+
+Route::get('register', [AuthController::class,'register'])->name('register.custom');

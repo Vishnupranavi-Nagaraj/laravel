@@ -1,0 +1,25 @@
+.footer {
+    text-align: center;
+    position: fixed;
+    margin: 0%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+    padding:20px;
+    background-color: grey;
+}
+.header{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    color: #ffffff;
+    padding:50px;
+    background-color: grey;
+    font-size: 20px;
+}
+.content{
+    padding-top: 130px;
+    color: brown;
+}

@@ -5,14 +5,14 @@
     <title>Employee Application </title>
 </head>
 <body>
-  
+<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 <div class="container">
 
     <header class="row">
        @include('users.header')
     </header>
 
-    <div>
+    <div class= "content">
         @yield('content')
     </div>
 

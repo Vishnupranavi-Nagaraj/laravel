@@ -5,15 +5,15 @@
 @extends('users.layout')
 
 @section('content')
- 
+    <div>
+        <h2>Employee Database</h2>
+    </div>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Employee Database</h2>
-            </div>
+            
             <div class="pull-right">
+                <br>
                 <a class="btn btn-success" href="{{ route('users.create') }}"> Add Employee</a>
-                
             </div>
         </div>
     </div>
