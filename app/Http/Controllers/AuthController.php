@@ -19,8 +19,18 @@ class AuthController extends Controller
 
     public function customLogin(AuthRequest $request)
     {
-        echo "vbnm,.";
-        exit();
+        // $request->validate([
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ]);
+   
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('You have Successfully loggedin');
+        }
+  
+        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
     }
 
     public function register()

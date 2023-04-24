@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Http\Requests\EmployeeRequest;
 use Illuminate\Http\Request;
+use App\Events\EmployeeMail;
 
 class EmployeeController extends Controller
 {
@@ -26,7 +27,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {      
+    {     
         return view('users.create');
     }
 
@@ -53,6 +54,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $store = Employee::find($id);
+        event(new EmployeeMail($store));
         return view('users.edit',compact('store'));
     }
 

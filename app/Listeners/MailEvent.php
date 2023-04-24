@@ -2,25 +2,23 @@
 
 namespace App\Listeners;
 
+use App\Employee;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Contracts\Mail\Mailable;
-use App\Mail\UserEmailNotification;
+use App\Events\EmployeeMail;
+use Mail;
 
 class MailEvent
 {
-    public $mailer;
 
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Mailer $mailer)
+    public function __construct()
     {
         //
-        $this->mailer = $mailer;
     }
 
     /**
@@ -29,12 +27,14 @@ class MailEvent
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(EmployeeMail $event)
     {
-        //
-        echo "from handle method";
+        $user = $event->email;
 
-        $this->mailer->to($event->user->email)
-            ->send(new UserEmailNotification($event->user));
+        Mail::send('welcome', ['id'=>'$user'], function($message) use ($user) {
+            $message->from($user['email']);
+            $message->to('anisha.naga@aspiresys.com');
+            $message->subject('Hello Team');
+        });
     }
 }
