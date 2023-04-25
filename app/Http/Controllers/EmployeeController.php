@@ -39,7 +39,8 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        Employee::create($request->all());
+        $users = Employee::create($request->all());
+        event(new EmployeeMail($users));
         return redirect()->route('users.index')
                         ->with('success','User created successfully.');
     }
