@@ -6,6 +6,7 @@ use App\Employee;
 use App\Http\Requests\EmployeeRequest;
 use Illuminate\Http\Request;
 use App\Events\EmployeeMail;
+use App\Jobs\EmailJobs;
 
 class EmployeeController extends Controller
 {
@@ -55,7 +56,8 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $store = Employee::find($id);
-        event(new EmployeeMail($store));
+        $mail = new EmailJobs($store);
+        $this->dispatch($mail)->onQueue('processing');
         return view('users.edit',compact('store'));
     }
 

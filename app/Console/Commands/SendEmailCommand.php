@@ -12,7 +12,7 @@ class SendEmailCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'send:email {id}';
+    protected $signature = 'send:email';
 
 
     /**
