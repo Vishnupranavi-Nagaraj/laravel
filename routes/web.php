@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserLoginController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Builder\Class_;
 
@@ -22,7 +23,12 @@ Route::get('/', function () {
 
 Route::resource('users', 'EmployeeController');
 
-Route::get('login', [AuthController::class,'index'])->name('login');
-Route::post('login',[AuthController::class, 'customLogin'])->name('login.custom'); 
+Route::get('user/{id}',function (int $id){
+    return $id;
+})->where('id', '[0-9]');
 
-Route::get('register', [AuthController::class,'register'])->name('register.custom');
+Route::post('login', [AuthController::class, 'customLogin']); 
+Route::post('register', [AuthController::class,'register']);
+
+
+

@@ -12,11 +12,6 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('login');
-    }
-
     public function customLogin(AuthRequest $request)
     {
         // $request->validate([
@@ -35,7 +30,9 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('register');
+                //$data['password'] = Hash::make($data['password']);
+
+
     }
 
     

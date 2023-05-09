@@ -33,7 +33,6 @@ class AuthRequest extends FormRequest
     public function getCredentials()
     {
         echo "vbnmk";
-        exit();
         $username = $this->get('name');
         if ($this->isEmail($username)) {
             return [
